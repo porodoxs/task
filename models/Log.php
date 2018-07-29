@@ -1,0 +1,52 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "log".
+ *
+ * @property double $ts
+ * @property int $type
+ * @property string $message
+ */
+class Log extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'log';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['ts', 'type'], 'required'],
+            [['ts'], 'number'],
+            [['type'], 'integer'],
+            [['message'], 'string'],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'ts' => 'Ts',
+            'type' => 'Type',
+            'message' => 'Message',
+        ];
+    }
+    public static function primaryKey()
+    {
+        return ['ts'];
+    }
+}
